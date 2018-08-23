@@ -23,17 +23,17 @@ ActiveRecord::Schema.define(version: 20180430013144) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer  "applicant_id"
-    t.integer  "sponsor_id"
-    t.integer  "status",                   default: 0
-    t.string   "name",                     default: ""
+    t.integer  "applicant_id",                             null: false
+    t.integer  "sponsor_id",                               null: false
+    t.integer  "status",                   default: 0,     null: false
+    t.string   "name",                     default: "",    null: false
     t.string   "description"
     t.string   "location",                 default: ""
-    t.string   "campus",                   default: "MTY"
-    t.integer  "category_id"
+    t.string   "campus",                   default: "MTY", null: false
+    t.integer  "category_id",                              null: false
     t.string   "photo",                    default: ""
     t.decimal  "cost",                     default: "0.0"
-    t.boolean  "public_event",             default: true
+    t.boolean  "public_event",             default: true,  null: false
     t.datetime "start_datetime"
     t.datetime "end_datetime"
     t.string   "requirements_to_register", default: ""
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20180430013144) do
     t.text     "registration_message",     default: ""
     t.string   "tag_names",                default: [],                 array: true
     t.integer  "max_capacity",             default: 0
+    t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
+    t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
   end
 
   create_table "registrees", force: :cascade do |t|
