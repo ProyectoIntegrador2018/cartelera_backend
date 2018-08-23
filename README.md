@@ -31,11 +31,13 @@ This is the webpage for "Cartelera de Innovación" for Tec de Monterrey, will li
 
 ### Da team
 
-| Name           | Email             | Role        |
-| -------------- | ----------------- | ----------- |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
+|Name                             |Email                  |Role                      |
+| ------------------------------- | --------------------- | ------------------------ |
+|Christian Alvaro Ramirez Roselló |                       |Backend/Frontend Developer|
+|Diego Adolfo José Villa          |                       |Frontend Developer        |
+|Julio Mauricio Noriega Reséndiz  |                       |Frontend Developer        |
+|Luis Carlos Flores Gallardo      |luiscfgmay294@gmail.com|Backend Developer/DevOps  |
+|Luis Uriel Ávila Vargas          |                       |Frontend Developer        |
 
 ### Management tools
 
