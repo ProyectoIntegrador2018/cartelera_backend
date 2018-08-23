@@ -1,0 +1,17 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  TargetRailsVersion: 5.0
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - 'Gemfile'

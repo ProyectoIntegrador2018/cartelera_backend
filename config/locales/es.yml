@@ -1,0 +1,17 @@
+es:
+  hello: "Hola Mundo"
+  activerecord:
+    errors:
+      models:
+        event:
+          attributes:
+            applicant_id:
+              presence: 'Falta agregar un aplicante del evento'
+            sponsor_id:
+              presence: 'Falta agregar un sponsor al evento'
+            name:
+              presence: 'Nombre de evento no puede estar vacío'
+            campus:
+              presence: 'Campus de evento no puede estar vacío'
+            category_id:
+              presence: 'Falta agregar una categoria al evento'
