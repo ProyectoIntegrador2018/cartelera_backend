@@ -34,7 +34,7 @@ This is the webpage for "Cartelera de Innovación" for Tec de Monterrey, will li
 ### Da team
 
 | Name                             | Email                   | Role                      |
-| -------------------------------- | ----------------------- | ------------------------ |
+| -------------------------------- | ----------------------- | ------------------------- |
 | Christian Alvaro Ramirez Roselló |                         | Backend/Frontend Developer|
 | Diego Adolfo José Villa          |                         | Frontend Developer        |
 | Julio Mauricio Noriega Reséndiz  |                         | Frontend Developer        |
@@ -45,10 +45,10 @@ This is the webpage for "Cartelera de Innovación" for Tec de Monterrey, will li
 
 You should ask for access to this tools if you don't have it already:
 
-* [Github repo](https://github.com/)
+* [Github repo](https://github.com/ProyectoIntegrador2018/cartelera_backend)
 * [Backlog]()
-* [Heroku](https://crowdfront-staging.herokuapp.com/)
-* [Documentation](https://drive.com)
+* [Heroku]()
+* [Documentation]()
 
 ## Development
 
