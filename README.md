@@ -1,20 +1,21 @@
-# Cartelera i
+# Cartelera i - API
 
-This is the webpage for "Cartelera de Innovación" for Tec de Monterrey, will list upcoming events for users, events were previously configured by users with permissions in another webpage.
+This is the repository of "Cartelera de Innovación - API" for Tec de Monterrey,
+a project that will list upcoming events that happens in the TEC circle. This
+part of the project acts as an API for the front end parts.
 
 ## Table of contents
 
 * [Client Details](#client-details)
 * [Environment URLS](#environment-urls)
-* [Da Team](#team)
+* [Team](#team)
 * [Management resources](#management-resources)
 * [Setup the project](#setup-the-project)
 * [Running the stack for development](#running-the-stack-for-development)
 * [Stop the project](#stop-the-project)
-* [Restoring the database](#restoring-the-database)
 * [Debugging](#debugging)
 * [Running specs](#running-specs)
-* [Checking code for potential issues](#checking-code-for-potential-issues)
+* [Contributing](#contributing)
 
 
 ### Client Details
@@ -23,7 +24,6 @@ This is the webpage for "Cartelera de Innovación" for Tec de Monterrey, will li
 | ------------------ | --------------------- | ---- |
 | Julio Noriega      | jnoriega@itesm.mx     |      |
 | A Diaz de Leon     | adiazdeleon@itesm.mx  |      |
-|                    |                       |      |
 
 
 ### Environment URLS
@@ -31,70 +31,61 @@ This is the webpage for "Cartelera de Innovación" for Tec de Monterrey, will li
 * **Production** - [TBD](TBD)
 * **Development** - [TBD](TBD)
 
-### Da team
+### Team
 
-| Name                             | Email                   | Role                      |
-| -------------------------------- | ----------------------- | ------------------------- |
-| Christian Alvaro Ramirez Roselló |                         | Backend/Frontend Developer|
-| Diego Adolfo José Villa          |                         | Frontend Developer        |
-| Julio Mauricio Noriega Reséndiz  |                         | Frontend Developer        |
-| Luis Carlos Flores Gallardo      | luiscfgmay294@gmail.com | Backend Developer/DevOps  |
-| Luis Uriel Ávila Vargas          |                         | Frontend Developer        |
+| Name                             | Email                   | Role                       |
+| -------------------------------- | ----------------------- | -------------------------- |
+| Alvaro Ramírez Rosselló          | alvaro.rsl@outlook.com  | Backend/Frontend Developer |
+| Diego Adolfo José Villa          |                         | Frontend Developer         |
+| Julio Mauricio Noriega Reséndiz  |                         | Frontend Developer         |
+| Luis Carlos Flores Gallardo      | luiscfgmay294@gmail.com | Backend Developer/DevOps   |
+| Luis Uriel Ávila Vargas          |                         | Frontend Developer         |
 
 ### Management tools
 
 You should ask for access to this tools if you don't have it already:
 
 * [Github repo](https://github.com/ProyectoIntegrador2018/cartelera_backend)
-* [Backlog]()
-* [Heroku]()
-* [Documentation]()
+<!-- * [Backlog]() -->
+* [Heroku](https://cartelera-api.herokuapp.com/)
+<!-- * [Documentation]() -->
 
 ## Development
 
 ### Setup the project
 
-You'll definitely want to install [`plis`](https://github.com/IcaliaLabs/plis), as in this case will
-let you bring up the containers needed for development. This is done by running the command
-`plis start`, which will start up the services in the `development` group (i.e. rails
-and sidekiq), along with their dependencies (posgres, redis, etc).
+In order to run this API, you will need [Ruby](https://www.ruby-lang.org/en/) and [Ruby on Rails](https://rubyonrails.org/),
+installing rails is out of the scope of this project, but we highly recommend [RailsBridge Installfest](http://installfest.railsbridge.org/installfest/).
 
-After installing please you can follow this simple steps:
+After installing follow these simple steps to make the setup:
 
 1. Clone this repository into your local machine
 
 ```bash
-$ git clone git@github.com:IcaliaLabs/crowdfront.git
+$ git clone https://github.com/ProyectoIntegrador2018/cartelera_backend.git
 ```
 
-2. Fire up a terminal and run:
+2. Install all the gems and dependencies:
 
 ```bash
-$ plis run web bash
+$ bundle install
 ```
 
-3. Inside the container you need to migrate the database:
+3. Setup the database
 
-```
-% rails db:migrate
+```bash
+$ rake db:setup
 ```
 
 ### Running the stack for Development
 
-1. Fire up a terminal and run: 
+1. Fire up a terminal and run:
 
+```bash
+$ rails server
 ```
-plis start
-```
 
-That command will lift every service crowdfront needs, such as the `rails server`, `postgres`, and `redis`.
-
-
-It may take a while before you see anything, you can follow the logs of the containers with:
-
-```
-$ docker-compose logs
-```
+This command will start the server locally in your localhost in port 3000.
 
 Once you see an output like this:
 
@@ -106,102 +97,35 @@ web_1   | => Ctrl-C to shutdown server
 web_1   | Listening on 0.0.0.0:3000, CTRL+C to stop
 ```
 
-This means the project is up and running.
+It means the project is up and running.
 
 ### Stop the project
 
-In order to stop crowdfront as a whole you can run:
+In order to stop the running server just press the following command:
 
 ```
-% plis stop
-```
-
-This will stop every container, but if you need to stop one in particular, you can specify it like:
-
-```
-% plis stop web
-```
-
-`web` is the service name located on the `docker-compose.yml` file, there you can see the services name and stop each of them if you need to.
-
-### Restoring the database
-
-You probably won't be working with a blank database, so once you are able to run crowdfront you can restore the database, to do it, first stop all services:
-
-```
-% plis stop
-```
-
-Then just lift up the `db` service:
-
-```
-% plis start db
-```
-
-The next step is to login to the database container:
-
-```
-% docker exec -ti crowdfront_db_1 bash
-```
-
-This will open up a bash session in to the database container.
-
-Up to this point we just need to download a database dump and copy under `crowdfront/backups/`, this directory is mounted on the container, so you will be able to restore it with:
-
-```
-root@a3f695b39869:/# bin/restoredb crowdfront_dev db/backups/<databaseDump>
-```
-
-If you want to see how this script works, you can find it under `bin/restoredb`
-
-Once the script finishes its execution you can just exit the session from the container and lift the other services:
-
-```
-% plis start
+% CTRL+C
 ```
 
 ### Debugging
 
-We know you love to use `debugger`, and who doesn't, and with Docker is a bit tricky, but don't worry, we have you covered.
-
-Just run this line at the terminal and you can start debugging like a pro:
-
-```
-% plis attach web
-```
-
-This will display the logs from the rails app, as well as give you access to stop the execution on the debugging point as you would expect.
-
-**Take note that if you kill this process you will kill the web service, and you will probably need to lift it up again.**
+We use `byebug` to debug the project, so if you are already comfortable you are
+all setup.
 
 ### Running specs
 
-To run specs, you can do:
+To run specs:
 
 ```
-$ plis run test rspec
+$ rspec
 ```
 
 Or for a specific file:
 
 ```
-$ plis run test rspec spec/models/user_spec.rb
+$ rspec spec/models/user_spec.rb
 ```
 
-### Checking code for potential issues
+## Contributing
 
-To run specs, you can do:
-
-```
-$ plis run web reek
-```
-
-```
-$ plis run web rubocop
-```
-
-```
-$ plis run web scss_lint
-```
-
-Or any other linter you have.
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/ProyectoIntegrador2018/cartelera_backend).
