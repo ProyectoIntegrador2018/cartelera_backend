@@ -54,6 +54,7 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.5)
+    cowsay (0.3.0)
     crass (1.0.3)
     darksky (1.0.5)
       typhoeus
@@ -210,6 +211,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   annotate
   byebug
+  cowsay
   darksky
   devise
   factory_bot_rails
@@ -230,4 +232,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.16.2
+   1.16.4

@@ -25,6 +25,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'sendgrid-ruby'
 gem 'darksky'
 gem 'ffaker'
+gem 'cowsay'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
