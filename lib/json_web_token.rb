@@ -1,6 +1,6 @@
 #
 class JsonWebToken
-  KEY = Rails.application.secrets.key_name || ENV["JWT_KEY"]
+  KEY = Rails.application.secrets.key_name || ENV['JWT_KEY']
 
   class << self
     def encode(payload)
