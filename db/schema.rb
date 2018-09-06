@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430013144) do
+ActiveRecord::Schema.define(version: 20180510203152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20180430013144) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.boolean  "enabled",    default: true, null: false
+  end
+
+  create_table "event_tags", force: :cascade do |t|
+    t.integer  "event_id",   null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_tags_on_event_id", using: :btree
+    t.index ["tag_id"], name: "index_event_tags_on_tag_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -57,7 +66,6 @@ ActiveRecord::Schema.define(version: 20180430013144) do
     t.string   "majors",                   default: [],                 array: true
     t.boolean  "has_deadline",             default: true
     t.text     "registration_message",     default: ""
-    t.string   "tag_names",                default: [],                 array: true
     t.integer  "max_capacity",             default: 0
     t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
     t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
@@ -75,7 +83,6 @@ ActiveRecord::Schema.define(version: 20180430013144) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "event_id",   null: false
   end
 
   create_table "users", force: :cascade do |t|
