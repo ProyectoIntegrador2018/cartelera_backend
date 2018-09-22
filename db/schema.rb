@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510203152) do
+ActiveRecord::Schema.define(version: 20180922233713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180510203152) do
     t.integer  "status",                   default: 0,     null: false
     t.string   "name",                     default: "",    null: false
     t.string   "description"
-    t.string   "location",                 default: ""
+    t.string   "address",                  default: ""
     t.string   "campus",                   default: "MTY", null: false
     t.integer  "category_id",                              null: false
     t.string   "photo",                    default: ""
@@ -67,8 +67,19 @@ ActiveRecord::Schema.define(version: 20180510203152) do
     t.boolean  "has_deadline",             default: true
     t.text     "registration_message",     default: ""
     t.integer  "max_capacity",             default: 0
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
     t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "title"
+    t.text     "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "registrees", force: :cascade do |t|
