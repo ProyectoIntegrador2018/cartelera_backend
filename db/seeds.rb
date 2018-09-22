@@ -14,35 +14,7 @@ User.create(email: 'luiscfgmay294@gmail.com', password: '123456', first_name: 'L
 Category.create(name: 'Tecnología y soluciones', enabled: true)
 
 # Events table
-Event.create(photo: 'https://www.shareicon.net/download/2015/09/03/95031_web_512x512.png',
-            name: 'Intro a Ruby',
-            start_datetime: '2019-04-10T18:00:43.000-05:00',
-            location: 'Tec de Monterrey, Aulas 1, 414',
-            cancelled: false,
-            description: 'Ven y aprende uno de los lenguajes más demandados en la industria de hoy',
-            campus: 'MTY',
-            cost: '0.0',
-            public_event: true,
-            end_datetime: '2019-04-10T20:00:43.000-05:00',
-            requirements_to_register: '',
-            registration_url: '',
-            registration_deadline: '2018-05-02T00:00:00.000-05:00',
-            schedule: '',
-            facebook_url: '',
-            twitter_url: '',
-            contact_phone: '',
-            contact_email: 'kuri@itesm.mx',
-            contact_name: 'Abraham Kuri',
-            published: true,
-            cancel_message: nil,
-            languages: [],
-            prefix: '',
-            has_registration: true,
-            pet_friendly: false,
-            majors: [],
-            has_deadline: true,
-            registration_message: '',
-            max_capacity: 0)
+Event.create(photo: 'https://www.shareicon.net/download/2015/09/03/95031_web_512x512.png', name: 'Intro a Ruby', start_datetime: '2019-04-10T18:00:43.000-05:00', location: 'Tec de Monterrey, Aulas 1, 414', cancelled: false, description: 'Ven y aprende uno de los lenguajes más demandados en la industria de hoy', campus: 'MTY', cost: '0.0', public_event: true, end_datetime: '2019-04-10T20:00:43.000-05:00', requirements_to_register: '', registration_url: '', registration_deadline: '2018-05-02T00:00:00.000-05:00', schedule: '', facebook_url: '', twitter_url: '', contact_phone: '', contact_email: 'kuri@itesm.mx', contact_name: 'Abraham Kuri', published: true, cancel_message: nil, languages: [], prefix: '', has_registration: true, pet_friendly: false, majors: [], has_deadline: true, registration_message: '', max_capacity: 0)
 
 Event.create(photo: "https://i.pinimg.com/564x/a5/87/f1/a587f12b19bbaf0cec56fe8a46d649a3.jpg",
             name: 'Ayuda a las Tortugas',
