@@ -26,6 +26,7 @@ gem 'sendgrid-ruby'
 gem 'darksky'
 gem 'ffaker'
 gem 'cowsay'
+gem 'geocoder'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

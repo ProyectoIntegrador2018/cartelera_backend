@@ -19,10 +19,18 @@ class Event < ApplicationRecord
   has_many :tags, inverse_of: :event
   has_many :registrees, inverse_of: :event
 
+  geocoded_by :full_address
+
   default_scope { order(start_datetime: :asc) }
   scope :published, -> { where(published: true) }
   scope :upcoming, -> { where('start_datetime >= ?', Date.today.beginning_of_day) }
   scope :past, -> { where('start_datetime < ?', Date.yesterday.end_of_day) }
+
+  after_validation :geocode, if: -> (obj) { obj.address.present? and obj.address_changed? }
+
+  def full_address
+    [address, state, 'México'].compact.join(', ')
+  end
 
   def registered_emails
     registrees.collect(&:email)
