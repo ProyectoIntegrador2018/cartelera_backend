@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180923012026) do
     t.string   "majors",                   default: [],                 array: true
     t.boolean  "has_deadline",             default: true
     t.text     "registration_message",     default: ""
+    t.string   "tag_names",                default: [],                 array: true
     t.integer  "max_capacity",             default: 0
     t.float    "latitude"
     t.float    "longitude"
