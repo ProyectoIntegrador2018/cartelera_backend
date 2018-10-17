@@ -95,7 +95,7 @@ class Api::V1::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:applicant_id, :sponsor_id, :status, :name,
-                                  :description, :location, :campus,
+                                  :description, :address, :campus,
                                   :category_id, :photo, :cost, :public_event,
                                   :start_datetime, :end_datetime,
                                   :requirements_to_register, :registration_url,
