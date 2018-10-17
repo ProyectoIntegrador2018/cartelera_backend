@@ -26,7 +26,7 @@ class Event < ApplicationRecord
   scope :upcoming, -> { where('start_datetime >= ?', Date.today.beginning_of_day) }
   scope :past, -> { where('start_datetime < ?', Date.yesterday.end_of_day) }
 
-  after_validation :geocode, if: -> (obj) { obj.full_address.present? and obj.full_address_changed? }
+  after_validation :geocode, if: -> (obj) { obj.address.present? and obj.address_changed? }
 
   def full_address
     [address, state, 'México'].compact.join(', ')
