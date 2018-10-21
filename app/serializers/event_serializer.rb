@@ -8,11 +8,11 @@ class EventSerializer < ActiveModel::Serializer
              :contact_name, :published, :cancel_message, :languages, :prefix,
              :has_registration, :pet_friendly, :majors, :has_deadline,
              :registration_message, :tag_names, :max_capacity, :category_id,
-             :registered_count
+             :registered_count, :latitude, :longitude, :city, :state
 
   def category
-    return 'General' unless object.category
-    object.category.name
+    return 'General' unless object.category_name
+    object.category_name
   end
 
   def registered_count
