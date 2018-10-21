@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180923012026) do
+ActiveRecord::Schema.define(version: 20181021033337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,17 +72,9 @@ ActiveRecord::Schema.define(version: 20180923012026) do
     t.float    "longitude"
     t.string   "city"
     t.string   "state"
+    t.string   "category_name"
     t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
     t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
-  end
-
-  create_table "places", force: :cascade do |t|
-    t.string   "title"
-    t.text     "address"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "registrees", force: :cascade do |t|

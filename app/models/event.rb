@@ -25,8 +25,18 @@ class Event < ApplicationRecord
   scope :published, -> { where(published: true) }
   scope :upcoming, -> { where('start_datetime >= ?', Date.today.beginning_of_day) }
   scope :past, -> { where('start_datetime < ?', Date.yesterday.end_of_day) }
+  scope :campus, -> (campus) { where('campus like ?', "%#{campus}%") }
+  scope :city, -> (city) { where('city like ?', "%#{city}%") }
+  scope :state, -> (state) { where('state like ?', "%#{state}%") }
+  scope :category, -> (category) { where('category_name like ?', "%#{category}%") }
+  # scope :tags, -> (tags) { where('tag_names like ?', "%#{tags}%") }
 
   after_validation :geocode, if: -> (obj) { obj.address.present? and obj.address_changed? }
+  after_create :set_category_name
+
+  def set_category_name
+    category_name == category.name
+  end
 
   def full_address
     [address, state, 'México'].compact.join(', ')

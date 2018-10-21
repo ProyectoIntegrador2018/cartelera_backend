@@ -4,7 +4,13 @@ class Api::V1::EventsController < ApplicationController
   before_action :authenticate_request!, except: %i[index show upcoming_events]
 
   def index
-    respond_with Event.upcoming.published
+    @events = Event.where(nil)
+    @events = @events.campus(params[:campus]) if params[:campus].present?
+    @events = @events.category(params[:category]) if params[:category].present?
+    @events = @events.city(params[:city]) if params[:city].present?
+    @events = @events.state(params[:state]) if params[:state].present?
+    # @events = @events.tags(params[:tags]) if params[:tags].present?
+    respond_with @events.upcoming.published
   end
 
   def show
@@ -105,6 +111,7 @@ class Api::V1::EventsController < ApplicationController
                                   :cancelled, :cancel_message, :pet_friendly,
                                   :prefix, :has_registration, :max_capacity,
                                   :registration_message, :has_deadline,
+                                  :latitude, :longitude, :city, :state,
                                   { languages: [] }, { tag_names: [] },
                                   majors: [])
   end
