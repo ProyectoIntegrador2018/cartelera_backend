@@ -48,6 +48,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', '~> 0.52.1', require: false
   gem 'pry'
+  gem 'pry_debug'
+  gem 'pry-nav'
 end
 
 # Testing
