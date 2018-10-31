@@ -1,7 +1,7 @@
 #
 class EventSerializer < ActiveModel::Serializer
   attributes :id, :photo, :name, :start_datetime, :address,
-             :cancelled, :description, :campus, :category, :cost,
+             :cancelled, :description, :campus, :category, :category_name, :cost,
              :public_event, :end_datetime, :requirements_to_register,
              :registration_url, :registration_deadline, :schedule,
              :facebook_url, :twitter_url, :contact_phone, :contact_email,

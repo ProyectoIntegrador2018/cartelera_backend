@@ -35,7 +35,8 @@ class Event < ApplicationRecord
   after_create :set_category_name
 
   def set_category_name
-    category_name == category.name
+    self.update_attribute(:category_name, category.name)
+    self.save
   end
 
   def full_address
