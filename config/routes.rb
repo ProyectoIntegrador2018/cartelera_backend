@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get '/sponsors' => 'users#sponsors'
       post '/sponsor' => 'users#create_sponsor'
       post '/password_recover' => 'users#recover_password'
+      get 'applicants/:applicant_id' => 'events#applicant'
       # Event routes
       get '/events/upcoming' => 'events#upcoming'
       get '/events/past' => 'events#past'
