@@ -25,18 +25,18 @@ class Event < ApplicationRecord
   scope :published, -> { where(published: true) }
   scope :upcoming, -> { where('start_datetime >= ?', Date.today.beginning_of_day) }
   scope :past, -> { where('start_datetime < ?', Date.yesterday.end_of_day) }
-  scope :campus, -> (campus) { where('campus like ?', "%#{campus}%") }
-  scope :city, -> (city) { where('city like ?', "%#{city}%") }
-  scope :state, -> (state) { where('state like ?', "%#{state}%") }
-  scope :category, -> (category) { where('category_name like ?', "%#{category}%") }
+  scope :campus, ->(campus) { where('campus like ?', "%#{campus}%") }
+  scope :city, ->(city) { where('city like ?', "%#{city}%") }
+  scope :state, ->(state) { where('state like ?', "%#{state}%") }
+  scope :category, ->(category) { where('category_name like ?', "%#{category}%") }
   # scope :tags, -> (tags) { where('tag_names like ?', "%#{tags}%") }
 
-  after_validation :geocode, if: -> (obj) { obj.address.present? and obj.address_changed? }
+  after_validation :geocode, if: ->(obj) { obj.address.present? && obj.address_changed? }
   after_create :set_category_name
 
   def set_category_name
-    self.update_attribute(:category_name, category.name)
-    self.save
+    update_attribute(:category_name, category.name)
+    save
   end
 
   def full_address
@@ -61,6 +61,10 @@ class Event < ApplicationRecord
 
   def revise_event
     update_attribute(:status, 'waiting')
+  end
+
+  def save_review_comments(text)
+    update_attribute(:review_comments, text)
   end
 
   class << self
