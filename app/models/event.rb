@@ -51,6 +51,18 @@ class Event < ApplicationRecord
     tags.collect(&:name)
   end
 
+  def approve_event
+    update_attribute(:status, 'approved')
+  end
+
+  def decline_event
+    update_attribute(:status, 'rejected')
+  end
+
+  def revise_event
+    update_attribute(:status, 'waiting')
+  end
+
   class << self
     def pages(options)
       if options[:per_page]
