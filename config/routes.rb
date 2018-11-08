@@ -21,6 +21,8 @@ Rails.application.routes.draw do
       get '/upcoming_events' => 'events#upcoming_events'
       get 'events/:id/registrees' => 'events#registrees'
       get 'applicant_events/:applicant_id' => 'events#applicant'
+      get 'applicant/:applicant_id/upcoming_events' => 'events#upcoming_applicant'
+      get 'applicant/:applicant_id/past_events' => 'events#past_applicant'
 
       # Registry routes
       resources :registrees, only: %i[index show create destroy]
