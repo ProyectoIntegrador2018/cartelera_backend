@@ -28,7 +28,7 @@ part of the project acts as an API for the front end parts.
 
 ### Environment URLS
 
-* **Production** - [cartelerai-api.herokuapp.com](API in Heroku)
+* **Production** - [API in Heroku](cartelerai-api.herokuapp.com)
 * **Development** - Local machine
 
 ### Team
