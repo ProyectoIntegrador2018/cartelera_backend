@@ -1,7 +1,7 @@
 #
 class Api::V1::EventsController < ApplicationController
   respond_to :json
-  before_action :authenticate_request!, except: %i[index show upcoming_events applicant]
+  before_action :authenticate_request!, except: %i[index show upcoming_events applicant upcoming_applicant past_applicant]
 
   def index
     @events = Event.where(nil)
@@ -22,8 +22,7 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def applicant
-    ###
-    respond_with Event.find(params[:applicant_id])
+    respond_with Event.where(applicant_id: params[:applicant_id])
   end
 
   def search; end
@@ -40,13 +39,13 @@ class Api::V1::EventsController < ApplicationController
 
   def upcoming_applicant
     @events = Event.upcoming
-    @events = @events.where(applicant: current_user) unless current_user.admin? || current_user.sponsor?
+    @events = @events.where(applicant_id: params[:applicant_id])
     render json: event_json, status: 200
   end
 
   def past_applicant
     @events = Event.past
-    @events = @events.where(sponsor: current_user) unless current_user.admin? || current_user.sponsor?
+    @events = @events.where(applicant_id: params[:applicant_id])
     render json: event_json, status: 200
   end
 
