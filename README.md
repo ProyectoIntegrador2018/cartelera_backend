@@ -28,8 +28,8 @@ part of the project acts as an API for the front end parts.
 
 ### Environment URLS
 
-* **Production** - [TBD](TBD)
-* **Development** - [TBD](TBD)
+* **Production** - [cartelerai-api.herokuapp.com](API in Heroku)
+* **Development** - Local machine
 
 ### Team
 
