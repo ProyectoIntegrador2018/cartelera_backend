@@ -19,7 +19,7 @@ class Event < ApplicationRecord
   has_many :tags, inverse_of: :event
   has_many :registrees, inverse_of: :event
 
-  geocoded_by :full_address
+  geocoded_by :location
 
   default_scope { order(start_datetime: :asc) }
   scope :published, -> { where(published: true) }
@@ -32,6 +32,7 @@ class Event < ApplicationRecord
   # scope :tags, -> (tags) { where('tag_names like ?', "%#{tags}%") }
 
   after_validation :geocode, if: ->(obj) { obj.location.present? && obj.location_changed? }
+  after_create :update_city_state
   after_create :set_category_name
 
   def set_category_name
@@ -39,8 +40,10 @@ class Event < ApplicationRecord
     save
   end
 
-  def full_address
-    [location, state, 'México'].compact.join(', ')
+  def update_city_state
+    address = Geocoder.search(location).first
+    update(city: address.city,
+           state: address.state)
   end
 
   def registered_emails
