@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181021033337) do
+ActiveRecord::Schema.define(version: 20181108175514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,17 +32,17 @@ ActiveRecord::Schema.define(version: 20181021033337) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer  "applicant_id",                             null: false
-    t.integer  "sponsor_id",                               null: false
-    t.integer  "status",                   default: 0,     null: false
-    t.string   "name",                     default: "",    null: false
+    t.integer  "applicant_id",                                                                                        null: false
+    t.integer  "sponsor_id",                                                                                          null: false
+    t.integer  "status",                   default: 0,                                                                null: false
+    t.string   "name",                     default: "",                                                               null: false
     t.string   "description"
-    t.string   "address",                  default: ""
-    t.string   "campus",                   default: "MTY", null: false
-    t.integer  "category_id",                              null: false
-    t.string   "photo",                    default: ""
+    t.string   "location",                 default: ""
+    t.string   "campus",                   default: "MTY",                                                            null: false
+    t.integer  "category_id",                                                                                         null: false
+    t.string   "photo",                    default: "http://gda.itesm.mx/zonaei/content/bqsbCK0XJW/logo-iag_LCB.png"
     t.decimal  "cost",                     default: "0.0"
-    t.boolean  "public_event",             default: true,  null: false
+    t.boolean  "public_event",             default: true,                                                             null: false
     t.datetime "start_datetime"
     t.datetime "end_datetime"
     t.string   "requirements_to_register", default: ""
@@ -54,25 +54,26 @@ ActiveRecord::Schema.define(version: 20181021033337) do
     t.string   "contact_phone",            default: ""
     t.string   "contact_name",             default: ""
     t.string   "contact_email",            default: ""
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                                                                          null: false
+    t.datetime "updated_at",                                                                                          null: false
     t.boolean  "published",                default: true
     t.boolean  "cancelled",                default: false
     t.text     "cancel_message",           default: ""
-    t.string   "languages",                default: [],                 array: true
+    t.string   "languages",                default: [],                                                                            array: true
     t.string   "prefix",                   default: ""
     t.boolean  "has_registration",         default: true
     t.boolean  "pet_friendly",             default: false
-    t.string   "majors",                   default: [],                 array: true
+    t.string   "majors",                   default: [],                                                                            array: true
     t.boolean  "has_deadline",             default: true
     t.text     "registration_message",     default: ""
-    t.string   "tag_names",                default: [],                 array: true
+    t.string   "tag_names",                default: [],                                                                            array: true
     t.integer  "max_capacity",             default: 0
     t.float    "latitude"
     t.float    "longitude"
     t.string   "city"
     t.string   "state"
     t.string   "category_name"
+    t.text     "review_comments"
     t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
     t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
   end

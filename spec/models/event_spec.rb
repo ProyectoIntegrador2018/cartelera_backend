@@ -14,6 +14,7 @@ RSpec.describe Event, type: :model do
   it { should validate_presence_of(:public_event) }
   it { should allow_value('example@domain.com').for(:contact_email) }
   it { should respond_to(:description) }
+  it { should respond_to(:location) }
   it { should respond_to(:photo) }
   it { should respond_to(:cost) }
   it { should respond_to(:start_datetime) }

@@ -6,10 +6,10 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.integer :status, null: false
       t.string :name, null: false
       t.string :description
-      t.string :address
+      t.string :location
       t.string :campus, null: false
       t.integer :category_id, null: false
-      t.string :photo
+      t.string :photo, default: 'http://gda.itesm.mx/zonaei/content/bqsbCK0XJW/logo-iag_LCB.png'
       t.decimal :cost
       t.boolean :public, default: true, null: false
       t.datetime :start_datetime

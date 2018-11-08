@@ -1,7 +1,7 @@
 #
 class Api::V1::EventsController < ApplicationController
   respond_to :json
-  before_action :authenticate_request!, except: %i[index show upcoming_events]
+  before_action :authenticate_request!, except: %i[index show upcoming_events applicant upcoming_applicant past_applicant]
 
   def index
     @events = Event.where(nil)
@@ -21,6 +21,10 @@ class Api::V1::EventsController < ApplicationController
     respond_with Event.find(params[:id]).registrees
   end
 
+  def applicant
+    respond_with Event.where(applicant_id: params[:applicant_id])
+  end
+
   def search; end
 
   def upcoming_events
@@ -30,6 +34,18 @@ class Api::V1::EventsController < ApplicationController
   def upcoming
     @events = Event.upcoming
     @events = @events.where(sponsor: current_user) unless current_user.admin?
+    render json: event_json, status: 200
+  end
+
+  def upcoming_applicant
+    @events = Event.upcoming
+    @events = @events.where(applicant_id: params[:applicant_id])
+    render json: event_json, status: 200
+  end
+
+  def past_applicant
+    @events = Event.past
+    @events = @events.where(applicant_id: params[:applicant_id])
     render json: event_json, status: 200
   end
 
@@ -101,7 +117,7 @@ class Api::V1::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:applicant_id, :sponsor_id, :status, :name,
-                                  :description, :address, :campus,
+                                  :description, :location, :campus,
                                   :category_id, :photo, :cost, :public_event,
                                   :start_datetime, :end_datetime,
                                   :requirements_to_register, :registration_url,
