@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181105155023) do
+ActiveRecord::Schema.define(version: 20181108175514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20181105155023) do
     t.integer  "status",                   default: 0,                                                                null: false
     t.string   "name",                     default: "",                                                               null: false
     t.string   "description"
-    t.string   "address",                  default: ""
+    t.string   "location",                 default: ""
     t.string   "campus",                   default: "MTY",                                                            null: false
     t.integer  "category_id",                                                                                         null: false
     t.string   "photo",                    default: "http://gda.itesm.mx/zonaei/content/bqsbCK0XJW/logo-iag_LCB.png"

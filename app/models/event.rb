@@ -31,7 +31,7 @@ class Event < ApplicationRecord
   scope :category, ->(category) { where('category_name like ?', "%#{category}%") }
   # scope :tags, -> (tags) { where('tag_names like ?', "%#{tags}%") }
 
-  after_validation :geocode, if: ->(obj) { obj.address.present? && obj.address_changed? }
+  after_validation :geocode, if: ->(obj) { obj.location.present? && obj.location_changed? }
   after_create :set_category_name
 
   def set_category_name
@@ -40,7 +40,7 @@ class Event < ApplicationRecord
   end
 
   def full_address
-    [address, state, 'México'].compact.join(', ')
+    [location, state, 'México'].compact.join(', ')
   end
 
   def registered_emails

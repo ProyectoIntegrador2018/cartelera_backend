@@ -5,6 +5,7 @@ FactoryBot.define do
     status 0
     name 'MyString'
     description 'MyString'
+    location 'MyString'
     campus 'MTY'
     category
     photo 'MyString'
