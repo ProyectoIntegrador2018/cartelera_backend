@@ -22,8 +22,7 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def applicant
-    ###
-    respond_with Event.find(params[:applicant_id])
+    respond_with Event.where(applicant_id: params[:applicant_id])
   end
 
   def search; end

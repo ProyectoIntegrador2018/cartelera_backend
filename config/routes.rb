@@ -13,7 +13,6 @@ Rails.application.routes.draw do
       get '/sponsors' => 'users#sponsors'
       post '/sponsor' => 'users#create_sponsor'
       post '/password_recover' => 'users#recover_password'
-      get 'applicants/:applicant_id' => 'events#applicant'
       # Event routes
       get '/events/upcoming' => 'events#upcoming'
       get '/events/past' => 'events#past'
@@ -21,6 +20,8 @@ Rails.application.routes.draw do
       get '/event_list' => 'events#event_list'
       get '/upcoming_events' => 'events#upcoming_events'
       get 'events/:id/registrees' => 'events#registrees'
+      get 'applicant_events/:applicant_id' => 'events#applicant'
+
       # Registry routes
       resources :registrees, only: %i[index show create destroy]
       # Category routes
