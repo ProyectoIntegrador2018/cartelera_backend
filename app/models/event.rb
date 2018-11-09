@@ -25,10 +25,13 @@ class Event < ApplicationRecord
   scope :published, -> { where(published: true) }
   scope :upcoming, -> { where('start_datetime >= ?', Date.today.beginning_of_day) }
   scope :past, -> { where('start_datetime < ?', Date.yesterday.end_of_day) }
-  scope :campus, ->(campus) { where('campus like ?', "%#{campus}%") }
-  scope :city, ->(city) { where('city like ?', "%#{city}%") }
-  scope :state, ->(state) { where('state like ?', "%#{state}%") }
-  scope :category, ->(category) { where('category_name like ?', "%#{category}%") }
+  scope :campus, -> (campus) { where('campus like ?', "%#{campus}%") }
+  scope :city, -> (city) { where('city like ?', "%#{city}%") }
+  scope :state, -> (state) { where('state like ?', "%#{state}%") }
+  scope :category, -> (category) { where('category_name like ?', "%#{category}%") }
+  scope :cost, -> (cost) { where('cost <= ?', cost.to_d ) }
+  scope :end_date, -> (date) { where('end_datetime <= ?', date.to_date ) }
+  scope :start_date, -> (date) { where('start_datetime >= ?', date.to_date ) }
   # scope :tags, -> (tags) { where('tag_names like ?', "%#{tags}%") }
 
   after_validation :geocode, if: ->(obj) { obj.location.present? && obj.location_changed? }
