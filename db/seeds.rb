@@ -11,6 +11,7 @@ User.create(email: 'hola@cartelerai.com', password: '123456', first_name: 'Julio
 User.create(email: 'luiscfgmay294@gmail.com', password: '123456', first_name: 'Luis', last_name: 'Flores', office: 'Tec de Monterrey Campus Monterrey', campus: 'MTY', user_type: 'sponsor', is_newbie: true)
 User.create(email: 'azael.capetillo@itesm.mx', password: 'azael123', first_name: 'Azael Jesus', last_name: 'Cortes Capetillo', office: 'Tec de Monterrey Campus Monterrey', campus: 'MTY', user_type: 'sponsor', is_newbie: false)
 User.create(email: 'adiazdeleon@itesm.mx', password: 'alejandra123', first_name: 'Alejandra', last_name: 'Díaz de Leon Lastras', office: 'Tec de Monterrey Campus Monterrey', campus: 'MTY', user_type: 'admin', is_newbie: false)
+User.create(email: 'applicant@mail.com', password: '123456', first_name: 'Juan', last_name: 'Perez', office: 'Tec de Monterrey Campus Monterrey', campus: 'MTY', user_type: 'applicant', is_newbie: false)
 
 
 # Categories table
