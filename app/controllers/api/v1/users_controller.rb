@@ -108,7 +108,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def sponsor_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :user_type)
   end
 
   def applicant_params
