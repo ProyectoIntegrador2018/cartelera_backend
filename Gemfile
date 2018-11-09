@@ -39,6 +39,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_bot_rails'
   gem 'annotate'
+  gem 'dotenv-rails'
 end
 
 group :development do
