@@ -19,6 +19,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def create_applicant
+    if current_user.user_type == 'sponsor'
+      user = User.new(applicant_params)
+      user.password = Creation.new.new_password
+      create_method(user)
+    else
+      render json: { error: 'No tienes los privilegios necesarios para crear un aplicante' }, status: :unauthorized
+    end
+  end
+
   def admins
     if current_user.admin?
       respond_with User.admins
@@ -88,6 +98,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def sponsor_params
+    params.require(:user).permit(:email)
+  end
+
+  def applicant_params
     params.require(:user).permit(:email)
   end
 
