@@ -15,3 +15,7 @@ es:
               presence: 'Campus de evento no puede estar vacío'
             category_id:
               presence: 'Falta agregar una categoria al evento'
+        user:
+          attributes:
+            email:
+              taken: 'Este correo ya esta siendo utilizado'
