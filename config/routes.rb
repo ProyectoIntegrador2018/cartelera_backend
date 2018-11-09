@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       # User routes
       resources :users, only: %i[index show create update destroy]
       get '/admins' => 'users#admins'
+      post '/admin' => 'users#create_admin'
       get '/sponsors' => 'users#sponsors'
       post '/sponsor' => 'users#create_sponsor'
       get '/applicants' => 'users#applicants'

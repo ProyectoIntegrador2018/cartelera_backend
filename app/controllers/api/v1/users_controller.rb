@@ -10,6 +10,16 @@ class Api::V1::UsersController < ApplicationController
     create_method(user)
   end
 
+  def create_admin
+    if current_user.admin?
+      user = User.new(admin_params)
+      user.password = Creation.new.new_password
+      create_admin_method(user)
+    else
+      render json: { error: 'No tienes los privilegios necesarios para crear un admin' }, status: :unauthorized
+    end
+  end
+
   def create_sponsor
     if current_user.admin?
       user = User.new(sponsor_params)
@@ -98,6 +108,15 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def create_admin_method(user)
+    if user.save
+      render json: user,
+             status: 201, serializer: AdminSerializer
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+  end
+
   def create_applicant_method(user)
     if user.save
       render json: user,
@@ -107,12 +126,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def admin_params
+    params.require(:user).permit(:email, :user_type)
+  end
+
   def sponsor_params
     params.require(:user).permit(:email, :user_type)
   end
 
   def applicant_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :user_type)
   end
 
   def user_params
