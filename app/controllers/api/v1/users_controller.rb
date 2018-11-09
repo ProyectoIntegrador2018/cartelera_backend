@@ -91,7 +91,7 @@ class Api::V1::UsersController < ApplicationController
 
   def create_method(user)
     if user.save
-      if user.user_type == 'applicant'
+      if user.user_type == 'applicants'
         render json: user,
                status: 201, serializer: ApplicantSerializer
       else
