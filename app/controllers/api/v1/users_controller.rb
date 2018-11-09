@@ -101,6 +101,8 @@ class Api::V1::UsersController < ApplicationController
 
   def create_method(user)
     if user.save
+      NewUserMailer.send_new_user_email(user.email, user.password, user.user_type)
+                   .deliver
       render json: user,
              status: 201, serializer: SponsorSerializer
     else
@@ -110,6 +112,8 @@ class Api::V1::UsersController < ApplicationController
 
   def create_admin_method(user)
     if user.save
+      NewUserMailer.send_new_user_email(user.email, user.password, user.user_type)
+                   .deliver
       render json: user,
              status: 201, serializer: AdminSerializer
     else
@@ -119,6 +123,8 @@ class Api::V1::UsersController < ApplicationController
 
   def create_applicant_method(user)
     if user.save
+      NewUserMailer.send_new_user_email(user.email, user.password, user.user_type)
+                   .deliver
       render json: user,
              status: 201, serializer: ApplicantSerializer
     else

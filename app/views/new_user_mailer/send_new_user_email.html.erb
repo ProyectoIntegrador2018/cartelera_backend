@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <h1>¡Bienvenido a la Cartelera de Innovación!</h1>
+    <% if @user_type == 'admin' -%>
+      <p>Te hemos registrado al sistema como Administrador</p>
+    <% elsif @user_type == 'sponsor' -%>
+      <p>Te hemos registrado al sistema como Sponsor</p>
+    <% else -%>
+      <p>Te hemos registrado al sistema como Solicitante</p>
+      <p></p>
+    <% end -%>
+
+      <p>Te pedimos ingreses a <a>http://cartelerai-admin.herokuapp.com/</a>
+         e introduzcas tu correo y contraseña temporal para hacer uso de
+         la Cartelera de Innovación.</p>
+      <br><br>
+
+      <p>Correo: <%= @email %></p>
+      <p>Contraseña temporal: <%= @password %></p>
+      <br>
+      <p>Al ingresar se te pedira ingresar una nueva contraseña para tu uso
+         personal.</p>
+      <br><br>
+
+      <p>¡Gracias por tu apoyo!</p>
+  </body>
+</html>
