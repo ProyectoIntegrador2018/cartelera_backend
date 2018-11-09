@@ -2,7 +2,7 @@
 class Api::V1::UsersController < ApplicationController
   include Sponsors
   respond_to :json
-  before_filter :authenticate_request!, except: [:recover_password]
+  before_filter :authenticate_request!, except: %i[recover_password]
 
   def create
     user = User.new(user_params)
@@ -29,6 +29,10 @@ class Api::V1::UsersController < ApplicationController
 
   def sponsors
     respond_with User.sponsors
+  end
+
+  def applicants
+    respond_with User.applicants
   end
 
   def index

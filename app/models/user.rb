@@ -18,5 +18,5 @@ class User < ApplicationRecord
 
   scope :sponsors, -> { where(user_type: 'sponsor') }
   scope :admins, -> { where(user_type: 'admin') }
-  scope :applicant, -> { where(user_type: 'applicant') }
+  scope :applicants, -> { where(user_type: 'applicant') }
 end
