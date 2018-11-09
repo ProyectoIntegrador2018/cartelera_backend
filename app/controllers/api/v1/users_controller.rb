@@ -1,6 +1,7 @@
 #
 class Api::V1::UsersController < ApplicationController
   include Sponsors
+  include Applicants
   respond_to :json
   before_filter :authenticate_request!, except: %i[recover_password]
 
@@ -22,8 +23,8 @@ class Api::V1::UsersController < ApplicationController
   def create_applicant
     if current_user.user_type == 'sponsor'
       user = User.new(applicant_params)
-      user.password = Creation.new.new_password
-      create_method(user)
+      user.password = Applicantcreation.new.new_password
+      create_applicant_method(user)
     else
       render json: { error: 'No tienes los privilegios necesarios para crear un aplicante' }, status: :unauthorized
     end
@@ -97,8 +98,17 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def create_applicant_method(user)
+    if user.save
+      render json: user,
+             status: 201, serializer: ApplicantSerializer
+    else
+      render json: { errors: user.errors }, status: 422
+    end
+  end
+
   def sponsor_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :user_type)
   end
 
   def applicant_params
