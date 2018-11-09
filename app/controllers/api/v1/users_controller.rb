@@ -97,6 +97,7 @@ class Api::V1::UsersController < ApplicationController
       else
         render json: user,
              status: 201, serializer: SponsorSerializer
+      end
     else
       render json: { errors: user.errors }, status: 422
     end
