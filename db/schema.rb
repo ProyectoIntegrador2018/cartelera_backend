@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181110173758) do
+ActiveRecord::Schema.define(version: 20181110223835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20181110173758) do
     t.string   "category_name"
     t.text     "review_comments"
     t.integer  "sponsor_reviewer",         default: 0
+    t.string   "status_type",              default: "sponsor_review"
     t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
     t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
   end
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 20181110173758) do
     t.string   "campus"
     t.integer  "user_type",              default: 1
     t.boolean  "enabled",                default: true, null: false
+    t.integer  "sponsored_by",           default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
