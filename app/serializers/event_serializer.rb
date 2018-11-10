@@ -9,7 +9,7 @@ class EventSerializer < ActiveModel::Serializer
              :has_registration, :pet_friendly, :majors, :has_deadline,
              :registration_message, :tag_names, :max_capacity, :category_id,
              :registered_count, :latitude, :longitude, :city, :state, :status,
-             :review_comments, :applicant_id
+             :review_comments, :applicant_id, :sponsor_reviewer, :status_type
 
   def category
     return 'General' unless object.category_name

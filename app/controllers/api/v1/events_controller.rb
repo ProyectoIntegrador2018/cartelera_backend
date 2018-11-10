@@ -1,7 +1,7 @@
 #
 class Api::V1::EventsController < ApplicationController
   respond_to :json
-  before_action :authenticate_request!, except: %i[index show upcoming_events applicant upcoming_applicant past_applicant]
+  before_action :authenticate_request!, except: %i[index show upcoming_events applicant upcoming_applicant past_applicant user_events]
 
   def index
     @events = Event.where(nil)
@@ -26,6 +26,12 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def search; end
+
+  def user_events
+    @events = Event.all
+    @events = @events.where(applicant_id: params[:applicant_id])
+    render json: event_json, status: 200
+  end
 
   def upcoming_events
     respond_with Event.published.upcoming.limit(8)
@@ -129,7 +135,8 @@ class Api::V1::EventsController < ApplicationController
                                   :registration_message, :has_deadline,
                                   :latitude, :longitude, :city, :state,
                                   { languages: [] }, { tag_names: [] },
-                                  majors: [])
+                                  majors: [], :review_comments, :sponsor_reviewer, 
+                                  :status_type)
   end
 
   def paginate_params
