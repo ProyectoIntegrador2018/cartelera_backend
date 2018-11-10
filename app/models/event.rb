@@ -70,6 +70,10 @@ class Event < ApplicationRecord
     update_attribute(:review_comments, text)
   end
 
+  def change_status_type(type)
+    update_attribute(:status_type, type)
+  end
+
   class << self
     def pages(options)
       if options[:per_page]
