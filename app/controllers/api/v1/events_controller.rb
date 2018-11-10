@@ -63,6 +63,7 @@ class Api::V1::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    binding.pry
     set_end_date
     if @event.save
       render json: @event, status: 201, location: [:api, @event]
@@ -134,9 +135,10 @@ class Api::V1::EventsController < ApplicationController
                                   :prefix, :has_registration, :max_capacity,
                                   :registration_message, :has_deadline,
                                   :latitude, :longitude, :city, :state,
+                                  :review_comments, :sponsor_reviewer, 
+                                  :status_type,
                                   { languages: [] }, { tag_names: [] },
-                                  majors: [], :review_comments, :sponsor_reviewer, 
-                                  :status_type)
+                                  majors: [])
   end
 
   def paginate_params
