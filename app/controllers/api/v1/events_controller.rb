@@ -63,7 +63,6 @@ class Api::V1::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    binding.pry
     set_end_date
     if @event.save
       render json: @event, status: 201, location: [:api, @event]
