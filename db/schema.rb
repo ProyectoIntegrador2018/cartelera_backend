@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181108175514) do
+ActiveRecord::Schema.define(version: 20181110173758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20181108175514) do
     t.string   "state"
     t.string   "category_name"
     t.text     "review_comments"
+    t.integer  "sponsor_reviewer",         default: 0
     t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
     t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
   end
