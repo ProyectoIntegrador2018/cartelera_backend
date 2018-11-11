@@ -47,13 +47,13 @@ class Api::V1::EventsController < ApplicationController
 
   def upcoming_applicant
     @events = Event.upcoming
-    @events = @events.where(applicant_id: params[:applicant_id])
+    @events = @events.where(applicant_id: current_user.id)
     render json: event_json, status: 200
   end
 
   def past_applicant
     @events = Event.past
-    @events = @events.where(applicant_id: params[:applicant_id])
+    @events = @events.where(applicant_id: current_user.id)
     render json: event_json, status: 200
   end
 
