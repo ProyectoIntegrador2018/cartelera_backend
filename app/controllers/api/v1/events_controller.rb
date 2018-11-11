@@ -10,8 +10,7 @@ class Api::V1::EventsController < ApplicationController
     @events = @events.city(params[:city]) if params[:city].present?
     @events = @events.state(params[:state]) if params[:state].present?
     # @events = @events.tags(params[:tags]) if params[:tags].present?
-    #respond_with @events.upcoming.published
-    respond_with @events.all
+    respond_with @events.upcoming.published
   end
 
   def show
@@ -43,11 +42,9 @@ class Api::V1::EventsController < ApplicationController
     if current_user.user_type == 'sponsor'
       @events = @events.where(sponsor_id: current_user.id) unless current_user.admin?
     end
-
     if current_user.user_type == 'applicant'
       @events = @events.where(applicant_id: current_user.id) unless current_user.admin?
     end
-    #@events = @events.where(sponsor_id: current_user.sponsored_by) unless current_user.admin?
     render json: event_json, status: 200
   end
 
@@ -68,11 +65,9 @@ class Api::V1::EventsController < ApplicationController
     if current_user.user_type == 'sponsor'
       @events = @events.where(sponsor: current_user) unless current_user.admin?
     end
-
     if current_user.user_type == 'applicant'
       @events = @events.where(applicant: current_user) unless current_user.admin?
     end
-    #@events = @events.where(sponsor_id: current_user.sponsored_by) unless current_user.admin?
     render json: event_json, status: 200
   end
 
