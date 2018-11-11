@@ -40,7 +40,13 @@ class Api::V1::EventsController < ApplicationController
 
   def upcoming
     @events = Event.upcoming
-    @events = @events.where(sponsor: current_user) unless current_user.admin?
+    if current_user.user_type == 'sponsor'
+      @events = @events.where(sponsor: current_user) unless current_user.admin?
+    end
+
+    if current_user.user_type == 'applicant'
+      @events = @events.where(applicant: current_user) unless current_user.admin?
+    end
     #@events = @events.where(sponsor_id: current_user.sponsored_by) unless current_user.admin?
     render json: event_json, status: 200
   end
@@ -59,7 +65,13 @@ class Api::V1::EventsController < ApplicationController
 
   def past
     @events = Event.past
-    @events = @events.where(sponsor: current_user) unless current_user.admin?
+    if current_user.user_type == 'sponsor'
+      @events = @events.where(sponsor: current_user) unless current_user.admin?
+    end
+
+    if current_user.user_type == 'applicant'
+      @events = @events.where(applicant: current_user) unless current_user.admin?
+    end
     #@events = @events.where(sponsor_id: current_user.sponsored_by) unless current_user.admin?
     render json: event_json, status: 200
   end
