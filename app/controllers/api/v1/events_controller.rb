@@ -39,25 +39,35 @@ class Api::V1::EventsController < ApplicationController
 
   def upcoming
     @events = Event.upcoming
-    @events = @events.where(sponsor: current_user) unless current_user.admin?
+    if current_user.user_type == 'sponsor'
+      @events = @events.where(sponsor_id: current_user.id) unless current_user.admin?
+    end
+    if current_user.user_type == 'applicant'
+      @events = @events.where(applicant_id: current_user.id) unless current_user.admin?
+    end
     render json: event_json, status: 200
   end
 
   def upcoming_applicant
     @events = Event.upcoming
-    @events = @events.where(applicant_id: params[:applicant_id])
+    @events = @events.where(applicant_id: current_user.id)
     render json: event_json, status: 200
   end
 
   def past_applicant
     @events = Event.past
-    @events = @events.where(applicant_id: params[:applicant_id])
+    @events = @events.where(applicant_id: current_user.id)
     render json: event_json, status: 200
   end
 
   def past
     @events = Event.past
-    @events = @events.where(sponsor: current_user) unless current_user.admin?
+    if current_user.user_type == 'sponsor'
+      @events = @events.where(sponsor: current_user) unless current_user.admin?
+    end
+    if current_user.user_type == 'applicant'
+      @events = @events.where(applicant: current_user) unless current_user.admin?
+    end
     render json: event_json, status: 200
   end
 
@@ -134,8 +144,7 @@ class Api::V1::EventsController < ApplicationController
                                   :prefix, :has_registration, :max_capacity,
                                   :registration_message, :has_deadline,
                                   :latitude, :longitude, :city, :state,
-                                  :review_comments, :sponsor_reviewer, 
-                                  :status_type,
+                                  :review_comments,
                                   { languages: [] }, { tag_names: [] },
                                   majors: [])
   end

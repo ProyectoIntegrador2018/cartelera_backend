@@ -1,6 +1,6 @@
 #
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :photo, :name, :start_datetime, :location,
+  attributes :id, :photo, :name, :start_datetime, :location, :sponsor_id,
              :cancelled, :description, :campus, :category, :category_name, :cost,
              :public_event, :end_datetime, :requirements_to_register,
              :registration_url, :registration_deadline, :schedule,
@@ -8,8 +8,8 @@ class EventSerializer < ActiveModel::Serializer
              :contact_name, :published, :cancel_message, :languages, :prefix,
              :has_registration, :pet_friendly, :majors, :has_deadline,
              :registration_message, :tag_names, :max_capacity, :category_id,
-             :registered_count, :latitude, :longitude, :city, :state, :status,
-             :review_comments, :applicant_id, :sponsor_reviewer, :status_type
+             :registered_count, :latitude, :longitude, :city, :state,
+             :review_comments, :applicant_id
 
   def category
     return 'General' unless object.category_name
