@@ -2,7 +2,7 @@
 class Event < ApplicationRecord
   validates :applicant_id,
             :sponsor_id,
-            #:status,
+            #:review_status,
             :name,
             :campus,
             :category_id,
@@ -55,15 +55,15 @@ class Event < ApplicationRecord
   end
 
   def approve_event
-    update_attribute(:status, 'approved')
+    update_attribute(:review_status, 'approved')
   end
 
   def decline_event
-    update_attribute(:status, 'rejected')
+    update_attribute(:review_status, 'rejected')
   end
 
   def revise_event
-    update_attribute(:status, 'waiting')
+    update_attribute(:review_status, 'waiting')
   end
 
   def save_review_comments(text)
