@@ -10,7 +10,8 @@ class Api::V1::EventsController < ApplicationController
     @events = @events.city(params[:city]) if params[:city].present?
     @events = @events.state(params[:state]) if params[:state].present?
     # @events = @events.tags(params[:tags]) if params[:tags].present?
-    respond_with @events.upcoming.published
+    #respond_with @events.upcoming.published
+    respond_with @events.all
   end
 
   def show
