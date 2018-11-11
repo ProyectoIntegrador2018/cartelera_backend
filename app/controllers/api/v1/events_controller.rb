@@ -40,7 +40,6 @@ class Api::V1::EventsController < ApplicationController
 
   def upcoming
     @events = Event.upcoming
-    binding.pry
     if current_user.user_type == 'sponsor'
       @events = @events.where(sponsor_id: current_user.id) unless current_user.admin?
     end
