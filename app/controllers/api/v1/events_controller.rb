@@ -136,8 +136,7 @@ class Api::V1::EventsController < ApplicationController
                                   :prefix, :has_registration, :max_capacity,
                                   :registration_message, :has_deadline,
                                   :latitude, :longitude, :city, :state,
-                                  :review_comments, :sponsor_reviewer, 
-                                  :status_type,
+                                  :review_comments, :sponsor_reviewer,
                                   { languages: [] }, { tag_names: [] },
                                   majors: [])
   end
