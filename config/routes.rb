@@ -19,7 +19,6 @@ Rails.application.routes.draw do
       # Event routes
       get '/events/upcoming' => 'events#upcoming'
       get '/events/past' => 'events#past'
-      get '/events/:applicant_id' => 'events#user_events'
       resources :events, only: %i[index show create update destroy]
       get '/event_list' => 'events#event_list'
       get '/upcoming_events' => 'events#upcoming_events'
