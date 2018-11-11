@@ -41,6 +41,9 @@ class Api::V1::EventsController < ApplicationController
     @events = Event.upcoming
     if current_user.user_type == 'sponsor'
       @events = @events.where(sponsor_id: current_user.id) unless current_user.admin?
+      @events = @events.where(review_status: 'sponsor_review')
+                       .or(@events.where(review_status: 'event_approved'))
+                       .or(@events.where(review_status: ''))
     end
     if current_user.user_type == 'applicant'
       @events = @events.where(applicant_id: current_user.id) unless current_user.admin?
