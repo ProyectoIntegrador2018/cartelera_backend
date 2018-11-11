@@ -2,7 +2,7 @@
 class Event < ApplicationRecord
   validates :applicant_id,
             :sponsor_id,
-            :status,
+            #:status,
             :name,
             :campus,
             :category_id,
