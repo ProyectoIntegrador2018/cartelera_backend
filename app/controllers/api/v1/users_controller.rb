@@ -141,11 +141,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def applicant_params
-    params.require(:user).permit(:email, :user_type)
+    params.require(:user).permit(:email, :user_type, :sponsored_by)
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :sponsored_by)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
   def update_params
