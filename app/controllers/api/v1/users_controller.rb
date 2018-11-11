@@ -53,7 +53,9 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def applicants
-    respond_with User.applicants
+    @applicants = User.applicants
+    @applicants = @applicants.where(sponsored_by: current_user.id)
+    respond_with @applicants
   end
 
   def index
