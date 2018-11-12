@@ -6,9 +6,12 @@ class Api::V1::EventsController < ApplicationController
   def index
     @events = Event.where(nil)
     @events = @events.campus(params[:campus]) if params[:campus].present?
-    @events = @events.category(params[:category]) if params[:category].present?
     @events = @events.city(params[:city]) if params[:city].present?
     @events = @events.state(params[:state]) if params[:state].present?
+    @events = @events.category(params[:category]) if params[:category].present?
+    @events = @events.cost(params[:cost]) if params[:cost].present?
+    @events = @events.end_date(params[:end_date]) if params[:end_date].present?
+    @events = @events.start_date(params[:start_date]) if params[:start_date].present?
     # @events = @events.tags(params[:tags]) if params[:tags].present?
     respond_with @events.upcoming.published
   end
