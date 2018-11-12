@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181111051039) do
+ActiveRecord::Schema.define(version: 20181112183128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 20181111051039) do
     t.text     "registration_message",     default: ""
     t.string   "tag_names",                default: [],                                                                            array: true
     t.integer  "max_capacity",             default: 0
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "latitude",                 default: 25.651426
+    t.float    "longitude",                default: -100.291094
     t.string   "city"
     t.string   "state"
     t.string   "category_name"
