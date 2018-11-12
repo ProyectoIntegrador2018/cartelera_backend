@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <p>Hola <%= @sponsor.first_name %> <%= @sponsor.last_name %></p>
+      <br>
+      
+      <p>Uno de sus solicitantes, <%= @applicant.first_name %> <%= @applicant.last_name %>, creo el evento "<%= @event.name %>" y espera su evaluación</p>
+      <br>
+      
+      <p>Puede entrar a <a>http://cartelerai-admin.herokuapp.com/</a> con sus credenciales para revisar el evento y ya sea aprovar el evento o rechazarlo y proporcionar feedback para su solicitante</p>
+      <br>
+
+      <p>Gracias,</p>
+      <p>Cartelera de Innovación</p>
+  </body>
+</html>

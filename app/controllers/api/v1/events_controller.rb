@@ -80,7 +80,14 @@ class Api::V1::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     set_end_date
+    @sponsor = User.find(@event.sponsor_id)
+    @applicant = User.find(@event.applicant_id)
+
     if @event.save
+      if @sponsor != @applicant
+        NewEventReviewMailer.review_new_event(@sponsor, @applicant, @event)
+                            .deliver
+      end
       render json: @event, status: 201, location: [:api, @event]
     else
       render json: { errors: @event.errors }, status: 422
@@ -90,7 +97,18 @@ class Api::V1::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     set_end_date
+    @sponsor = User.find(@event.sponsor_id)
+    @applicant = User.find(@event.applicant_id)
+
+    @review_status_change = false
+    @review_status_change = true if @event.review_status != event_params[:review_status]
+
     if @event.update(event_params)
+      if @review_status_change && @event.review_status == 'sponsor_review'
+        EventReviewMailer.sponsor_review_event(@sponsor, @applicant, @event)
+      else
+        EventReviewMailer.applicant_review_event(@sponsor, @applicant, @event)
+      end
       render json: @event, status: 200, location: [:api, @event]
     else
       render json: { errors: @event.errors }, status: 422
