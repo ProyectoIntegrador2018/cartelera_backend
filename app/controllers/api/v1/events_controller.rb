@@ -106,8 +106,10 @@ class Api::V1::EventsController < ApplicationController
     if @event.update(event_params)
       if @review_status_change && @event.review_status == 'sponsor_review'
         EventReviewMailer.sponsor_review_event(@sponsor, @applicant, @event)
+                         .deliver
       else
         EventReviewMailer.applicant_review_event(@sponsor, @applicant, @event)
+                         .deliver
       end
       render json: @event, status: 200, location: [:api, @event]
     else

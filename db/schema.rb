@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20181112183128) do
     t.boolean  "enabled",    default: true, null: false
   end
 
+  create_table "event_tags", force: :cascade do |t|
+    t.integer  "event_id",   null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_tags_on_event_id", using: :btree
+    t.index ["tag_id"], name: "index_event_tags_on_tag_id", using: :btree
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer  "applicant_id",                                                                                        null: false
     t.integer  "sponsor_id",                                                                                          null: false
@@ -64,11 +73,20 @@ ActiveRecord::Schema.define(version: 20181112183128) do
     t.string   "city"
     t.string   "state"
     t.string   "category_name"
-    t.text     "review_comments",          default: "false"
+    t.text     "review_comments"
     t.integer  "sponsor_reviewer",         default: 0
     t.string   "status_type",              default: "sponsor_review"
     t.index ["applicant_id"], name: "index_events_on_applicant_id", using: :btree
     t.index ["sponsor_id"], name: "index_events_on_sponsor_id", using: :btree
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "title"
+    t.text     "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "registrees", force: :cascade do |t|
@@ -83,7 +101,6 @@ ActiveRecord::Schema.define(version: 20181112183128) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "event_id",   null: false
   end
 
   create_table "users", force: :cascade do |t|

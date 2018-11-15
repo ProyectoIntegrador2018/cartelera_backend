@@ -13,7 +13,7 @@
 
       <p>Puede entrar a <a>http://www.cartelerai.com</a> y ver su evento.</p>
       <br>
-    <% elsif @event.review_status == 'sponsor_review' -%>
+    <% elsif @event.review_status == 'event_rejected' -%>
       <p>Su sponsor, <%= @sponsor.first_name %> <%= @sponsor.last_name %>, reviso su evento "<%= @event.name %>" y rechazo su evento.</p>
       <br>
       

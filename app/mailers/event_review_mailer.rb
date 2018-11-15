@@ -3,7 +3,6 @@ class EventReviewMailer < ApplicationMailer
   default from: 'no-reply@cartelerai.com'
 
   def sponsor_review_event(sponsor, applicant, event)
-    binding.pry
     @sponsor = sponsor
     @applicant = applicant
     @event = event
