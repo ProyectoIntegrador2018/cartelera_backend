@@ -14,37 +14,12 @@ User.create(email: 'luiscfgmay294@gmail.com', password: '123456', first_name: 'L
 Category.create(name: 'Tecnología y soluciones', enabled: true)
 
 # Events table
-Event.create(photo: 'https://www.shareicon.net/download/2015/09/03/95031_web_512x512.png',
-            name: 'Intro a Ruby',
-            start_datetime: '2019-04-10T18:00:43.000-05:00',
-            location: 'Tec de Monterrey, Aulas 1, 414',
-            cancelled: false,
-            description: 'Ven y aprende uno de los lenguajes más demandados en la industria de hoy',
-            campus: 'MTY',
-            cost: '0.0',
-            public_event: true,
-            end_datetime: '2019-04-10T20:00:43.000-05:00',
-            requirements_to_register: '',
-            registration_url: '',
-            registration_deadline: '2018-05-02T00:00:00.000-05:00',
-            schedule: '',
-            facebook_url: '',
-            twitter_url: '',
-            contact_phone: '',
-            contact_email: 'kuri@itesm.mx',
-            contact_name: 'Abraham Kuri',
-            published: true,
-            cancel_message: nil,
-            languages: [],
-            prefix: '',
-            has_registration: true,
-            pet_friendly: false,
-            majors: [],
-            has_deadline: true,
-            registration_message: '',
-            max_capacity: 0)
+Event.create(applicant_id: 1, sponsor_id: 1, status: 0, photo: 'https://www.shareicon.net/download/2015/09/03/95031_web_512x512.png', name: 'Intro a Ruby', start_datetime: '2019-04-10T18:00:43.000-05:00', location: 'Tec de Monterrey, Aulas 1, 414', cancelled: false, description: 'Ven y aprende uno de los lenguajes más demandados en la industria de hoy', campus: 'MTY', cost: '0.0', public_event: true, end_datetime: '2019-04-10T20:00:43.000-05:00', requirements_to_register: '', registration_url: '', registration_deadline: '2018-05-02T00:00:00.000-05:00', schedule: '', facebook_url: '', twitter_url: '', contact_phone: '', contact_email: 'kuri@itesm.mx', contact_name: 'Abraham Kuri', published: true, cancel_message: nil, languages: [], prefix: '', has_registration: true, pet_friendly: false, majors: [], has_deadline: true, registration_message: '', category_id: 2, max_capacity: 0)
 
-Event.create(photo: "https://i.pinimg.com/564x/a5/87/f1/a587f12b19bbaf0cec56fe8a46d649a3.jpg",
+Event.create(applicant_id: 1,
+            sponsor_id: 1,
+            status: 0,
+            photo: "https://i.pinimg.com/564x/a5/87/f1/a587f12b19bbaf0cec56fe8a46d649a3.jpg",
             name: 'Ayuda a las Tortugas',
             start_datetime: '2018-12-25T22:16:28.000-06:00',
             location: nil,
@@ -72,9 +47,13 @@ Event.create(photo: "https://i.pinimg.com/564x/a5/87/f1/a587f12b19bbaf0cec56fe8a
             majors: [],
             has_deadline: true,
             registration_message: nil,
+            category_id: 2,
             max_capacity: 0)
 
-Event.create(photo: 'https://www.studentenergy.org/assets/base/student_energy_logo-964e46be01503945456d00e210713a41.jpg',
+Event.create(applicant_id: 1,
+            sponsor_id: 1,
+            status: 0,
+            photo: 'https://www.studentenergy.org/assets/base/student_energy_logo-964e46be01503945456d00e210713a41.jpg',
             name: 'Student Energy Regional Meeting',
             start_datetime: '2019-04-10T09:00:15.000-05:00',
             location: 'Centro Estudiantil',
@@ -102,4 +81,5 @@ Event.create(photo: 'https://www.studentenergy.org/assets/base/student_energy_lo
             majors: [],
             has_deadline: true,
             registration_message: 'Nuestro evento funciona gracias a nuestros patrocinadores, OXXO y H-E-B. Gracias por tu registro. Nos vemos pronto',
+            category_id: 2,
             max_capacity: 14)
