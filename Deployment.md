@@ -24,12 +24,16 @@ Despues de haberlo descargado, asegurese de entrar al directorio.
 $ cd cartelera_backend
 ```
 
-Ya dentro del directorio, se instalan todas las dependencias necesarias para el proyecto con
+Ya dentro del directorio, se instalan todas las dependencias necesarias para el proyecto con:
 ```bash
 $ bundle install
 ```
+Recuerda mantener actualizadas todas las gemas
+```bash
+$ bundle update
+```
 
-El proceso toma un tiempo, hay que ser pacientes.
+El proceso toma un tiempo para terminar de instalar y/o actualizar.
 
 
 ### Heroku CLI
@@ -49,6 +53,7 @@ $ bundle install
 Ya teniendo configurado Heroku, podemos proceder a crear nuestro sitio web.
 
 ### Subir a Heroku
+**Hacer los suguientes pasos en caso de necesitar hostear el API en un nuevo dominio**
 
 Dentro del directorio del proyecto, se crea un sitio con Heroku de la siguiente manera:
 ```bash
