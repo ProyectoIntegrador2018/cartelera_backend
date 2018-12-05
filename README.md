@@ -1,21 +1,26 @@
 # Cartelera i - API
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/7c40c2f93e040573d76c/maintainability)](https://codeclimate.com/github/ProyectoIntegrador2018/cartelera_backend/maintainability)
+
 Este es el repositorio de "Cartelera de Innovación - API" para el Tec de Monterrey,
 un proyecto que listará eventos próximos a suceder dentro del Tec. Esta parte del 
 proyecto actuará como API para las distintas partes del front-end.
 
 ## Tabla de Contenidos
 
-* [Detalles del Cliente](#detalles-del-cliente)
-* [URLs de Ambiente](#urls-de-ambiente)
-* [Equipo](#equipo)
-* [Recursos de Mantenimiento](#recursos-de-mantenimiento)
-* [Setup del Proyecto](#setup-del-proyecto)
-* [Correr el Proyecto para Desarrollo](#correr-el-proyecto-para-desarrollo)
-* [Detener el proyecto](#detener-el-proyecto)
-* [Debugging](#debugging)
-* [Correr Pruebas](#correr-pruebas)
-* [Contribuciones](#contribuciones)
+- [Cartelera i - API](#cartelera-i---api)
+  - [Tabla de Contenidos](#tabla-de-contenidos)
+    - [Detalles del Cliente](#detalles-del-cliente)
+    - [URLs de Ambiente](#urls-de-ambiente)
+    - [Equipo](#equipo)
+    - [Recursos de Mantenimiento](#recursos-de-mantenimiento)
+  - [Desarrollo](#desarrollo)
+    - [Setup del Proyecto](#setup-del-proyecto)
+    - [Correr el Proyecto para Desarrollo](#correr-el-proyecto-para-desarrollo)
+    - [Detener el Proyecto](#detener-el-proyecto)
+    - [Debugging](#debugging)
+    - [Correr Pruebas](#correr-pruebas)
+  - [Contribuciones](#contribuciones)
 
 
 ### Detalles del Cliente
